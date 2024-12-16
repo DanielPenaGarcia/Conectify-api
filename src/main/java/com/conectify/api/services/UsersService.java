@@ -1,6 +1,7 @@
 package com.conectify.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.conectify.api.dtos.requests.CreateConectifyUserRequestDTO;
@@ -13,13 +14,17 @@ public class UsersService {
     @Autowired
     private UsersRepository usersRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public User createUser(CreateConectifyUserRequestDTO requestDTO) {
+        String passwordEncoded = passwordEncoder.encode(requestDTO.getPassword());
         User user = new User(
                 requestDTO.getName(),
                 requestDTO.getLastName(),
                 requestDTO.getEmail(),
                 requestDTO.getPhone(),
-                requestDTO.getPassword());
+                passwordEncoded);
         return usersRepository.save(user);
     }
 

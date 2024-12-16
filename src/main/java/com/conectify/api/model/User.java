@@ -30,7 +30,7 @@ public class User {
 
     private Provider provider;
 
-    @Indexed(unique = true, name = "provider_id")
+    // @Indexed(unique = true, name = "provider_id")
     private String providerId;
 
     @Indexed(unique = true, name = "phone_number")

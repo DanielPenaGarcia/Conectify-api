@@ -17,7 +17,7 @@ import com.conectify.api.services.UsersService;
 //Enable cors from all origins
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("api/users")
 public class UsersController {
 
     @Autowired
